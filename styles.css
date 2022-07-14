@@ -33,15 +33,21 @@
   .calculator-grid > button {
     cursor: pointer;
     font-size: 2rem;
-    border: 1px solid white;
+    border: 1px solid var(--Primary_Blue);
     outline: none;
     color: var(--Text_color_light);
     background-color: var(--Primary_Black);
     opacity: 0.75;
+    transition: background 250ms ease-in-out, transform 150ms ease;
   }
 
-  .calculator-grid > button:hover {
+  .calculator-grid > button:hover, .calculator-grid > button:focus{
     opacity: 0.9;
+  }
+
+  .calculator-grid > button:active {
+
+    transform: scale(0.9);
   }
 
   .span-two {
