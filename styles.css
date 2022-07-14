@@ -61,6 +61,9 @@
     margin: 0.5em;
     cursor: pointer;
 
+    color: var(--complementText);
+    background-color: transparent;
+
     display: flex;
     justify-content: center;
     align-items: center;
