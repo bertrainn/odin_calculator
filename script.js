@@ -99,6 +99,9 @@ const delete_btn = document.querySelector('[data-delete]')
 const allclear_btn = document.querySelector('[data-all-clear]')
 const previous_txt = document.querySelector('[data-previous-operand]')
 const current_txt = document.querySelector('[data-current-operand]')
+const lightmode_btn = document.getElementById('light_btn')
+
+let darkMode = localStorage.getItem("darkMode")
 
 const calculator = new Calculator(previous_txt, current_txt)
 
@@ -129,4 +132,24 @@ allclear_btn.addEventListener ('click', button => {
 delete_btn.addEventListener ('click', button => {
     calculator.delete()
     calculator.updateDisplay()
+})
+
+const enableDarkMode = () => {
+    document.body.classList.add('darkmode')
+    localStorage.setItem("darkMode", "enabled")
+}
+
+const disableDarkMode = () => {
+    document.body.classList.remove('darkmode')
+    localStorage.setItem("darkMode", "null")
+}
+
+lightmode_btn.addEventListener('click', () => {
+    darkMode = localStorage.getItem("darkMode")
+    if(darkMode !== "enabled") {
+        enableDarkMode(darkMode)
+    }
+    else {
+        disableDarkMode(darkMode)
+    }
 })

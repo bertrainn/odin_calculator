@@ -2,9 +2,25 @@
     --Primary_Blue: #0078AA;
     --Secondary_Blue: #3AB4F2;
     --Primary_Black: #222831;
+    --Secondary_black: #212121;
     --Primary_White: #eeeeee;
+    --Secondary_White: #F9FAFD;
     --Text_color_light: #f5f5f5;
     --Text_color_dark: #0a0a0a;
+
+    --background: var(--Primary_White);
+    --mainText: var(--Text_color_light);
+    --complementText: var(--Text_color_dark);
+    --screen: var(--Secondary_Blue);
+    --buttons: var(--Primary_Black);
+  }
+
+  .darkmode {
+    --background: var(--Primary_Black);
+    --mainText: var(--Text_color_dark);
+    --complementText: var(--Text_color_light);
+    --screen: var(--Primary_Blue);
+    --buttons: var(--Primary_White);
   }
   
   *,
@@ -18,14 +34,70 @@
   }
 
   body {
-    background-color: var(--Primary_White);
+    background-color: var(--background);
+    display:flex;
+    flex-direction: column;
+    color: var(--complementText);
   }
+
+  header, footer {
+    justify-content: center;
+    text-align: center;
+  }
+
+  header{ 
+    display: flex;
+  }
+
+  h1 {
+    font-weight: 800px;
+    padding: 0.5em;
+  }
+
+  #light_btn {
+
+    position: fixed;
+    right: 0px;
+    margin: 0.5em;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    outline: none;
+    transition: 1s;
+    transform: scale(1);
+  }
+
+  #light_btn:hover, #light_btn:focus {
+    transform: scale(1.1)
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1.25em;
+  }
+
+  a {
+    color: var(--complementText);
+    text-decoration: none;
+  }
+
+  a:hover, a:focus {
+    padding: .25em, 0;
+    color: var(--screen);
+  }
+
 
   .calculator-grid {
     display: grid;
     justify-content: center;
     align-content: center;
-    min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5,100px);
   }
@@ -33,10 +105,10 @@
   .calculator-grid > button {
     cursor: pointer;
     font-size: 2rem;
-    border: 1px solid var(--Primary_Blue);
+    border: 1px solid var(--screen);
     outline: none;
-    color: var(--Text_color_light);
-    background-color: var(--Primary_Black);
+    color: var(--mainText);
+    background-color: var(--buttons);
     opacity: 0.75;
     transition: background 250ms ease-in-out, transform 150ms ease;
   }
@@ -56,8 +128,7 @@
 
   .output {
     grid-column: 1 / -1;
-    background-color: var(--Primary_Blue);
-    opacity: 0.75;
+    background-color: var(--screen);
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -68,12 +139,13 @@
   }
 
   .output .previous-operand {
-    color: var(--Text_color_light);
-    opacity: 0.75;
+    color: var(--mainText);
     font-size: 1.5rem;
   }
 
   .output .current-operand {
-    color: var(--Text_color_light);
+    color: var(--mainText);
     font-size: 2.5rem;
   }
+
+  
